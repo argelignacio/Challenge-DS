@@ -1,12 +1,11 @@
 import { Path } from 'react-konva'
-const { parseSync } = require('svgson')
 
 const SvgToImg = (props) => {
-  const svg = parseSync(props.image)
+  const svgActual = props.image
   let i = 0
   return (
-    <svg>
-      {svg.children.map((path) => (
+    <div>
+      {svgActual.children.map((path) => (
         <Path
           key={i++}
           stroke={path.attributes.stroke}
@@ -15,7 +14,7 @@ const SvgToImg = (props) => {
           data={path.attributes.d}
         />
       ))}
-    </svg>
+    </div>
   )
 }
 

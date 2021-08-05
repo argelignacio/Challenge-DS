@@ -1,17 +1,25 @@
 import dynamic from 'next/dynamic'
-import { server } from '../config'
+const { parseSync } = require('svgson')
 const SvgToImg = dynamic(() => import('../components/svgToImg'), { ssr: false })
 const Canvas = dynamic(() => import('../components/Canvas'), { ssr: false })
 
-export default function Home(props) {
+export default function Home({ svg }) {
   return (
     <Canvas>
-      <SvgToImg image={props}></SvgToImg>
+      <SvgToImg image={svg} />
     </Canvas>
   )
 }
 Home.getInitialProps = async (ctx) => {
-  const res = await fetch(`${server}/public/cat.svg`)
-  console.log(res)
-  return { res }
+  const cat = await fetch('http://localhost:3000/cat.svg').then((response) =>
+    response.text()
+  )
+  const motorcycle = await fetch('http://localhost:3000/motorcycle.svg').then(
+    (response) => response.text()
+  )
+  const woman = await fetch('http://localhost:3000/woman.svg').then(
+    (response) => response.text()
+  )
+  const svg = parseSync(cat)
+  return { svg }
 }
