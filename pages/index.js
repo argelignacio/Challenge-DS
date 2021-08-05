@@ -14,12 +14,6 @@ Home.getInitialProps = async (ctx) => {
   const cat = await fetch('http://localhost:3000/cat.svg').then((response) =>
     response.text()
   )
-  const motorcycle = await fetch('http://localhost:3000/motorcycle.svg').then(
-    (response) => response.text()
-  )
-  const woman = await fetch('http://localhost:3000/woman.svg').then(
-    (response) => response.text()
-  )
   const svg = parseSync(cat)
   return { svg }
 }
