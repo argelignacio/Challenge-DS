@@ -1,4 +1,3 @@
-import Konva from 'konva'
 import { Layer, Stage } from 'react-konva'
 
 const Canvas = (props) => {

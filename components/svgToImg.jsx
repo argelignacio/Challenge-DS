@@ -1,8 +1,8 @@
 import { Path } from 'react-konva'
 const { parseSync } = require('svgson')
 
-const SvgToImg = (image) => {
-  const svg = parseSync(image.image)
+const SvgToImg = (props) => {
+  const svg = parseSync(props.image)
   let i = 0
   return (
     <svg>
