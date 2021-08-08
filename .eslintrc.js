@@ -18,5 +18,6 @@ module.exports = {
     'comma-dangle': 'off',
     'space-before-function-paren': 'off',
     'react/prop-types': 'off',
+    'space-infix-opp': 'off',
   },
 }
